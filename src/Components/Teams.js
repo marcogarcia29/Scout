@@ -6,7 +6,8 @@ const Teams = () => {
     const [team1, setTeam1] = useState([]);
     const [team2, setTeam2] = useState([]);
 
-    const addPlayer = () => {
+    const addPlayer = (e) => {
+        e.preventDefault();
         setPlayers([...players, name]);
         setName("");
     };
@@ -27,10 +28,10 @@ const Teams = () => {
 
     return (
         <div className="teamSelector">
-            <form className="testForm">
+            <form className="testForm" onSubmit={addPlayer}>
                 <label>Nome do jogador </label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                <button onClick={() => {addPlayer()}} type="button">
+                <button onClick={(e) => addPlayer(e)} type="button">
                     Enviar
                 </button>
             </form>
