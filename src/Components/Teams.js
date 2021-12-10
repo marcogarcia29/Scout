@@ -28,29 +28,33 @@ const Teams = () => {
     return (
         <div className="teamSelector">
             <form className="testForm">
-                <label>Enter player name</label>
+                <label>Nome do jogador </label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                 <button onClick={() => {addPlayer()}} type="button">
-                    Send
+                    Enviar
                 </button>
             </form>
-            <>
+            <div className="organized">
                 {players?.map(player =>
                     <div key={player.id}><p>{player}</p></div>
                 )}
                 <button onClick={() => handlePlayers()}>SELECIONAR JOGADOR TIME 1</button>
                 <button onClick={() => handlePlayers2()}>SELECIONAR JOGADOR TIME 2</button>
                 {/* {console.log(players[Math.floor(Math.random()*players.length)])} */}
-            </>
-            <div>
-                TEAM ONE:
+            </div>
+            <div className="teams">
+                <div className="alignTeams">
+                <h3>TIME A</h3>
                     {team1?.map(selected => 
                         <p>{selected}</p>
                     )}
-                TEAM TWO:
+                </div>
+                <div className="alignTeams">
+                    <h3>TIME B</h3>
                     {team2?.map(selected => 
                         <p>{selected}</p>
                     )}
+                </div>
             </div>
         </div>
     );
