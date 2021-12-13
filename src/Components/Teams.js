@@ -1,16 +1,10 @@
-import React, { useState} from "react";
+import React, { useState, useContext} from "react";
+import TeamContext from "./TeamContext";
 
 const Teams = () => {
-    const [players, setPlayers] = useState([]);
-    const [name, setName] = useState("");
+    const {players, setPlayers} = useContext(TeamContext);
     const [team1, setTeam1] = useState([]);
     const [team2, setTeam2] = useState([]);
-
-    const addPlayer = (e) => {
-        e.preventDefault();
-        setPlayers([...players, name]);
-        setName("");
-    };
 
     const handlePlayers = () => {
         const playerName = players[Math.floor(Math.random()*players.length)];
@@ -28,20 +22,15 @@ const Teams = () => {
 
     return (
         <div className="teamSelector">
-            <form className="testForm" onSubmit={addPlayer}>
-                <label>Nome do jogador </label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                <button onClick={(e) => addPlayer(e)} type="button">
-                    Enviar
-                </button>
-            </form>
             <div className="organized">
                 {players?.map(player =>
-                    <div key={player.id}><p>{player}</p></div>
+                    <div key={player.id}>
+                        <p>{player}</p>
+                    </div>
                 )}
                 <button onClick={() => handlePlayers()}>SELECIONAR JOGADOR TIME 1</button>
                 <button onClick={() => handlePlayers2()}>SELECIONAR JOGADOR TIME 2</button>
-                {/* {console.log(players[Math.floor(Math.random()*players.length)])} */}
+                
             </div>
             <div className="teams">
                 <div className="alignTeams">
@@ -57,6 +46,7 @@ const Teams = () => {
                     )}
                 </div>
             </div>
+            {console.log(players)}
         </div>
     );
 };
