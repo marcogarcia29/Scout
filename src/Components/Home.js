@@ -4,6 +4,7 @@ import TeamContext from "./TeamContext";
 const Home = () => {
   const { players, setPlayers } = useContext(TeamContext);
   const { name, setName } = useContext(TeamContext);
+
   const addPlayer = (e) => {
     e.preventDefault();
     setPlayers([
@@ -21,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <form className="testForm" onSubmit={addPlayer}>
+      <form className="formalize" onSubmit={addPlayer}>
         <label>Nome do jogador </label>
         <input
           type="text"

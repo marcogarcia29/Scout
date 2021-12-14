@@ -9,11 +9,13 @@ import Home from './Components/Home';
 function App() {
   const [players, setPlayers] = useState([]);
   const [name, setName] = useState("");
+  const [team1, setTeam1] = useState([]);
+  const [team2, setTeam2] = useState([]);
 
   return (
     <Router>
       <TeamContext.Provider
-        value={{players, setPlayers, name, setName}}
+        value={{players, setPlayers, name, setName, team1, setTeam1, team2, setTeam2}}
       >
         <div className="App">
           <Navbar/>
