@@ -1,38 +1,79 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+* {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 500;
+}
+
+li,
+ul,
+a {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(171, 241, 101);
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu li {
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.teamSelector {
+  width: 900px;
+  margin: auto;
+}
+
+.formalize {
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.organized {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.teams {
+  display:flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.alignTeams > h3 {
+  font-weight: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btnTeam {
+  margin-top: 10px;
+  font-family: 'Inconsolata', monospace;
+  text-align: center;
+  width: 100px;
+  margin-left: 20px;
+  border-radius: 5px;
+  background-color: rgb(142, 238, 158);
 }
 
-.App-link {
-  color: #61dafb;
+.btnTeam:hover {
+  transition: 200ms;
+  box-shadow: 2px 2px 2px gray;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navTitle {
+  margin-left: 230px;
 }
