@@ -1,35 +1,36 @@
-import React, { useContext } from "react";
-import TeamContext from "./TeamContext";
+import React, { useContext } from 'react'
+import TeamContext from './TeamContext'
 
 const Home = () => {
-  const { players, setPlayers } = useContext(TeamContext);
-  const { name, setName } = useContext(TeamContext);
+  const { players, setPlayers } = useContext(TeamContext)
+  const { name, setName } = useContext(TeamContext)
 
-  const addPlayer = (e) => {
-    e.preventDefault();
+  const addPlayer = e => {
+    e.preventDefault()
     setPlayers([
       ...players,
-      { name: name, id: players.length + 1, payment: false },
-    ]);
-    setName("");
-  };
+      { name: name, id: players.length + 1, payment: false }
+    ])
+    setName('')
+  }
 
-  const handleChange = (index) => {
-    const changePlayers = [...players];
-    changePlayers[index].payment = !changePlayers[index].payment;
-    setPlayers(changePlayers);
-  };
+  const handleChange = index => {
+    const changePlayers = [...players]
+    changePlayers[index].payment = !changePlayers[index].payment
+    setPlayers(changePlayers)
+  }
 
   return (
     <>
+      <h3>Insira o nome dos jogadores</h3>
       <form className="formalize" onSubmit={addPlayer}>
         <label>Nome do jogador </label>
         <input
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
         />
-        <button onClick={(e) => addPlayer(e)} type="button">
+        <button onClick={e => addPlayer(e)} type="button">
           Enviar
         </button>
       </form>
@@ -46,7 +47,7 @@ const Home = () => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
