@@ -27,9 +27,9 @@ const Teams = () => {
   return (
     <div className="teamSelector">
       <div className="organized">
+        <h2>JOGADORES</h2>
         {players?.map((player) => (
           <div key={player.id}>
-            <h2>JOGADORES</h2>
             <p>{player.name}</p>
           </div>
         ))}

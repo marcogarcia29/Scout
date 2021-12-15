@@ -38,7 +38,7 @@ a {
 }
 
 .formalize {
-  padding-top: 15px;
+  padding: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -46,6 +46,27 @@ a {
 
 .organized {
   text-align: center;
+}
+
+.organized p {
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.organized div {
+  /* height: 30px; */
+}
+
+.organized div:nth-child(odd) {
+  background: rgb(171 241 101 / 92%);
+  border: 1px solid transparent;
+  border-radius: 12px;
+}
+
+.alignTeams div:nth-child(odd) {
+  background: rgb(171 241 101 / 92%);
+  border: 1px solid transparent;
+  border-radius: 12px;
 }
 
 .teams {
