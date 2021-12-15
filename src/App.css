@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
 
 * {
@@ -5,6 +6,8 @@
   font-weight: 500;
 }
 
+=======
+>>>>>>> b0c0f85ab97325ae098e76df6ca2184de6dd7fe9
 li,
 ul,
 a {
@@ -20,7 +23,11 @@ a {
   background-color: rgb(171, 241, 101);
   justify-content: space-around;
   align-items: center;
+<<<<<<< HEAD
   padding: 10px;
+=======
+  padding: 20px;
+>>>>>>> b0c0f85ab97325ae098e76df6ca2184de6dd7fe9
 }
 
 .menu {
@@ -57,6 +64,7 @@ a {
 
 .alignTeams > h3 {
   font-weight: normal;
+<<<<<<< HEAD
 }
 
 .btnTeam {
@@ -76,4 +84,6 @@ a {
 
 .navTitle {
   margin-left: 230px;
+=======
+>>>>>>> b0c0f85ab97325ae098e76df6ca2184de6dd7fe9
 }

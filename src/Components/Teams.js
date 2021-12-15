@@ -26,6 +26,7 @@ const Teams = () => {
       <div className="organized">
         {players?.map((player) => (
           <div key={player.id}>
+<<<<<<< HEAD
             <h2>JOGADORES</h2>
             <p>{player.name}</p>
           </div>
@@ -35,6 +36,16 @@ const Teams = () => {
         </button>
         <button className="btnTeam" onClick={() => handlePlayers2()}>
           SELECIONAR JOGADOR TIME B
+=======
+            <p>{player.name}</p>
+          </div>
+        ))}
+        <button onClick={(e) => handlePlayers(e)}>
+          SELECIONAR JOGADOR TIME 1
+        </button>
+        <button onClick={() => handlePlayers2()}>
+          SELECIONAR JOGADOR TIME 2
+>>>>>>> b0c0f85ab97325ae098e76df6ca2184de6dd7fe9
         </button>
       </div>
       <div className="teams">

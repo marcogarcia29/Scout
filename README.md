@@ -15,4 +15,7 @@ Criar uma plataforma de _Football Scout_ com as seguintes telas:
 - React com Hooks, utilizando a _Context Api_, sem persistência de dados.
 - CSS nativo ou biblioteca de components.
 - Seguir padrão de commits do [Conventional Commits]([https://www.conventionalcommits.org/en/v1.0.0/][df1])
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b0c0f85ab97325ae098e76df6ca2184de6dd7fe9
