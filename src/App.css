@@ -17,7 +17,7 @@ a {
 .navbar {
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(171, 241, 101);
+  background-color: #444;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
@@ -30,11 +30,23 @@ a {
 .menu li {
   margin-left: 10px;
   padding: 10px;
+  color: aliceblue;
+}
+
+.menu li:hover{
+  color: chartreuse;
 }
 
 .teamSelector {
   width: 900px;
   margin: auto;
+}
+
+.teams {
+  display:flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .formalize {
@@ -51,10 +63,6 @@ a {
 .organized p {
   display: inline-block;
   margin-right: 2px;
-}
-
-.organized div {
-  /* height: 30px; */
 }
 
 .organized div:nth-child(odd) {
