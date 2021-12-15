@@ -7,18 +7,21 @@ const Teams = () => {
   const {team2, setTeam2} = useContext(TeamContext);
 
   const handlePlayers = (e) => {
-    e.preventDefault();
-    const playerName = players[Math.floor(Math.random() * players.length)];
-    setTeam1([...team1, playerName]);
-    const getPlayer = players.indexOf(playerName);
-    players.splice(getPlayer, 1);
+    if (players.length) {
+      const playerName = players[Math.floor(Math.random() * players.length)];
+      setTeam1([...team1, playerName]);
+      const getPlayer = players.indexOf(playerName);
+      players.splice(getPlayer, 1);
+    }
   };
 
   const handlePlayers2 = () => {
-    const playerName = players[Math.floor(Math.random() * players.length)];
-    setTeam2([...team2, playerName]);
-    const getPlayer = players.indexOf(playerName);
-    players.splice(getPlayer, 1);
+    if (players.length) {
+      const playerName = players[Math.floor(Math.random() * players.length)];
+      setTeam2([...team2, playerName]);
+      const getPlayer = players.indexOf(playerName);
+      players.splice(getPlayer, 1);
+    }
   };
 
   return (
