@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Teams from './Components/Teams'
 import Navbar from './Components/Navbar'
@@ -12,6 +12,7 @@ function App() {
   const [name, setName] = useState('')
   const [team1, setTeam1] = useState([])
   const [team2, setTeam2] = useState([])
+
 
   return (
     <Router>
@@ -35,6 +36,7 @@ function App() {
               <Route path="/teams" element={<Teams />} />
               <Route path="/scout" element={<Scout />} />
             </Routes>
+            <button onClick={() => localStorage.clear()}> LIMPAR SELEÇÃO ATUAL</button>
           </div>
         </div>
       </TeamContext.Provider>
