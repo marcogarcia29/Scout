@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Switch,
+} from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import Teams from "./Components/Teams";
@@ -31,7 +36,7 @@ function App() {
           <Navbar />
           <div className="content">
             <Routes>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" element={<Home />} />
               <Route path="/teams" component={Teams} />
               <Route path="/scout" component={Scout} />
             </Routes>

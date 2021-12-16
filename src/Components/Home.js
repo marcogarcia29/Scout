@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TeamContext from "./TeamContext";
 
-import './Home.css';
+import "./Home.css";
 
 const Home = () => {
   const { players, setPlayers } = useContext(TeamContext);
@@ -24,38 +24,47 @@ const Home = () => {
     changePlayers[index].payment = !changePlayers[index].payment;
     setPlayers(changePlayers);
 
-    var cont = 0;
+    let count = 0;
 
     changePlayers.forEach((player) => {
       if (player.payment === true) {
-        cont += 1;
+        count += 1;
       }
     });
-    setTotalPaid(cont);
+
+    console.log(count);
+
+    const newTotalPaid = rent / count;
+    setTotalPaid(newTotalPaid);
   };
+
+  useEffect(() => {
+    setTotalPaid(rent);
+  }, [rent]);
 
   return (
     <>
       <h3>Insira o nome dos jogadores</h3>
 
       {/* Form 1*/}
-      <form className="formalize">
-        <h3>Valor do aluguel:</h3>
+      <form className="formalize" onSubmit={addPlayer}>
+        <label className="labelForm">Valor do aluguel:</label>
         <input
           type="number"
+          step=".01"
           value={rent}
           onChange={(e) => setRent(e.target.value)}
+          className="inputForm"
         />
-      </form>
 
-      {/* Form 2*/}
-      <form className="formalize" onSubmit={addPlayer}>
         <label>Nome do jogador </label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="inputForm"
         />
+
         <button onClick={(e) => addPlayer(e)} type="button">
           Enviar
         </button>
@@ -64,18 +73,13 @@ const Home = () => {
       {/* Card */}
       <div className="organized-container">
         <h2>JOGADORES</h2>
-        <div>
-          Próximo
-        </div>
-        <div>
-          <h3>Valor a pagar: </h3>
-          {rent}
+        <div>Próximo</div>
+        <div style={{ marginBottom: "10px" }}>
+          <h3>Valor a pagar por jogador: </h3>
+          {`R$ ${Number(totalPaid).toFixed(2)}`}
         </div>
         {players?.map((player, index) => (
-          <div 
-            className="card-player"
-            key={player.id}
-          >
+          <div className="card-player" key={player.id}>
             <p>{player.name}</p>
             <input
               type="checkbox"
