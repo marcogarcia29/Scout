@@ -27,19 +27,15 @@ const Home = () => {
     changePlayers[index].payment = !changePlayers[index].payment;
     setPlayers(changePlayers);
 
-    let count = 0;
+    const shouldBePaid = rent/players.length
 
-    changePlayers.forEach((player) => {
-      if (player.payment === true) {
-        count += 1;
-      }
-    });
-
-    console.log(count);
-
-    const newTotalPaid = rent / count;
-    setTotalPaid(newTotalPaid);
+    if (changePlayers[index].payment === true) {
+      setTotalPaid(totalPaid - shouldBePaid)
+    }else{
+      setTotalPaid(totalPaid + shouldBePaid)
+    }
   };
+
   // LOCAL STORAGE GUYS
   useEffect(() => {
     if (players.length === 0) {
@@ -72,6 +68,20 @@ const Home = () => {
     setTotalPaid(rent);
   }, [rent]);
 
+  // LOCAL STORAGE TOTAL PAID
+  useEffect(() => {
+    if (rent === 0) {
+      const storagePaid = localStorage.getItem("totalPaid");
+      if (storagePaid) {
+        setRent(JSON.parse(storagePaid));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("totalPaid", JSON.stringify(totalPaid));
+  }, [totalPaid]);
+
   return (
     <>
       <h3>Insira o nome dos jogadores</h3>
@@ -94,8 +104,7 @@ const Home = () => {
           onChange={(e) => setName(e.target.value)}
           className="inputForm"
         />
-
-        <button onClick={(e) => addPlayer(e)} type="button">
+        <button onClick={(e) => addPlayer(e)} type="submit">
           Enviar
         </button>
       </form>
@@ -103,10 +112,9 @@ const Home = () => {
       {/* Card */}
       <div className="organized-container">
         <h2>JOGADORES</h2>
-        <div>Próximo</div>
         <div style={{ marginBottom: "10px" }}>
-          <h3>Valor a pagar por jogador: </h3>
-          {`R$ ${Number(totalPaid).toFixed(2)}`}
+          <h3>Valor a ser pago: </h3>
+          {formatPrice(totalPaid)}
         </div>
         {players?.map((player, index) => (
           <div className="card-player" key={player.id}>
