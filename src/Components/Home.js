@@ -95,9 +95,6 @@ const Home = () => {
       <div className="organized-container">
         <h2>JOGADORES</h2>
         <div>
-          Próximo
-        </div>
-        <div>
           <h3>Valor a pagar: </h3>
           {formatPrice(rent)}
         </div>
