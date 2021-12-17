@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import TeamContext from "./TeamContext";
-
-import "./Home.css";
+import './Home.css';
 
 const Home = () => {
   const { players, setPlayers } = useContext(TeamContext);
@@ -9,6 +8,10 @@ const Home = () => {
 
   const [rent, setRent] = useState(0);
   const [totalPaid, setTotalPaid] = useState(0);
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)
+}  
 
   const addPlayer = (e) => {
     e.preventDefault();
@@ -37,6 +40,33 @@ const Home = () => {
     const newTotalPaid = rent / count;
     setTotalPaid(newTotalPaid);
   };
+  // LOCAL STORAGE GUYS
+  useEffect(() => {
+    if (players.length === 0) {
+      const storageItens = localStorage.getItem("players");
+      if (storageItens) {
+        setPlayers(JSON.parse(storageItens));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("players", JSON.stringify(players));
+  }, [players]);
+
+  // LOCAL STORAGE RENT
+  useEffect(() => {
+    if (rent === 0) {
+      const storageRent = localStorage.getItem("rent");
+      if (storageRent) {
+        setRent(JSON.parse(storageRent));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("rent", JSON.stringify(rent));
+  }, [rent]);
 
   useEffect(() => {
     setTotalPaid(rent);
