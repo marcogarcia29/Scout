@@ -37,8 +37,8 @@ function App() {
           <div className="content">
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route path="/teams" component={Teams} />
-              <Route path="/scout" component={Scout} />
+              <Route path="/teams" element={<Teams />} />
+              <Route path="/scout" element={<Scout />} />
             </Routes>
           </div>
         </div>
