@@ -1,22 +1,18 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Switch,
-} from "react-router-dom";
-import { useState } from "react";
-import "./App.css";
-import Teams from "./Components/Teams";
-import Navbar from "./Components/Navbar";
-import TeamContext from "./Components/TeamContext";
-import Home from "./Components/Home";
-import { Scout } from "./Components/Scout";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import './App.css'
+import Teams from './Components/Teams'
+import Navbar from './Components/Navbar'
+import TeamContext from './Components/TeamContext'
+import Home from './Components/Home'
+import { Scout } from './Components/Scout'
 
 function App() {
   const [players, setPlayers] = useState([]);
   const [name, setName] = useState("");
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);
+
 
   return (
     <Router>
@@ -40,6 +36,7 @@ function App() {
               <Route path="/teams" element={<Teams />} />
               <Route path="/scout" element={<Scout />} />
             </Routes>
+            <button onClick={() => localStorage.clear()}> LIMPAR SELEÇÃO ATUAL</button>
           </div>
         </div>
       </TeamContext.Provider>
