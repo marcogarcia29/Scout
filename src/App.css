@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
 
 * {
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
   font-weight: 500;
 }
 
@@ -33,7 +33,7 @@ a {
   color: aliceblue;
 }
 
-.menu li:hover{
+.menu li:hover {
   color: chartreuse;
 }
 
@@ -43,7 +43,7 @@ a {
 }
 
 .teams {
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   text-align: center;
@@ -52,8 +52,10 @@ a {
 .formalize {
   padding: 15px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 .organized {
@@ -78,7 +80,7 @@ a {
 }
 
 .teams {
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   text-align: center;
@@ -90,7 +92,7 @@ a {
 
 .btnTeam {
   margin-top: 10px;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
   text-align: center;
   width: 100px;
   margin-left: 20px;
