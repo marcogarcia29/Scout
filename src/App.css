@@ -59,6 +59,9 @@ a {
 }
 
 .organized {
+  margin: auto;
+  width: 40%;
+  align-self: center;
   text-align: center;
 }
 
@@ -69,12 +72,7 @@ a {
 
 .organized div:nth-child(odd) {
   background: rgb(171 241 101 / 92%);
-  border: 1px solid transparent;
-  border-radius: 12px;
-}
-
-.alignTeams div:nth-child(odd) {
-  background: rgb(171 241 101 / 92%);
+  color: black;
   border: 1px solid transparent;
   border-radius: 12px;
 }
@@ -107,4 +105,41 @@ a {
 
 .navTitle {
   margin-left: 230px;
+}
+
+.createTeamBtn {
+  margin-top: 15px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(142, 238, 158);
+}
+
+.createTeamBtn:hover {
+  transition: 200ms;
+  box-shadow: 2px 2px 2px gray;
+  cursor: pointer;
+}
+
+.sendPlayerNameBtn {
+  height: 25px;
+  border-radius: 5px;
+  background-color: rgb(142, 238, 158);
+}
+
+.sendPlayerNameBtn:hover {
+  transition: 200ms;
+  box-shadow: 1px 1px 1px gray;
+  cursor: pointer;
+}
+
+.clearStorageBtn {
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(142, 238, 158);
+}
+
+.clearStorageBtn:hover {
+  transition: 200ms;
+  box-shadow: 2px 2px 2px gray;
+  cursor: pointer;
 }
