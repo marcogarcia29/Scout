@@ -13,6 +13,14 @@ function App() {
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);
 
+  const handleStorage = (e) => {
+    e.preventDefault();
+    setTeam1([]);
+    setTeam2([]);
+    setName("");
+    setPlayers([]);
+    localStorage.clear();
+  }
 
   return (
     <Router>
@@ -36,7 +44,7 @@ function App() {
               <Route path="/teams" element={<Teams />} />
               <Route path="/scout" element={<Scout />} />
             </Routes>
-            <button onClick={() => localStorage.clear()}> LIMPAR SELEÇÃO ATUAL</button>
+            <button className='clearStorageBtn' onClick={(e) => handleStorage(e)}> LIMPAR SELEÇÃO ATUAL</button>
           </div>
         </div>
       </TeamContext.Provider>
