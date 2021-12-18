@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import TeamContext from "./TeamContext";
+import { Link } from 'react-router-dom'
 import './Home.css';
 
 const Home = () => {
@@ -15,11 +16,13 @@ const Home = () => {
 
   const addPlayer = (e) => {
     e.preventDefault();
-    setPlayers([
-      ...players,
-      { name: name, id: players.length + 1, payment: false },
-    ]);
-    setName("");
+    if(name !== ""){  
+      setPlayers([
+        ...players,
+        { name: name, id: players.length + 1, payment: false },
+      ]);
+      setName("");
+    }
   };
 
   const handleChange = (index) => {
@@ -104,7 +107,7 @@ const Home = () => {
           onChange={(e) => setName(e.target.value)}
           className="inputForm"
         />
-        <button onClick={(e) => addPlayer(e)} type="submit">
+        <button className="sendPlayerNameBtn" onClick={(e) => addPlayer(e)} type="submit">
           Enviar
         </button>
       </form>
@@ -125,7 +128,14 @@ const Home = () => {
               onChange={() => handleChange(index)}
             />
           </div>
-        ))}
+        ))}{totalPaid === 0  && (
+          <>
+            <Link to="/teams">
+              <button className="createTeamBtn">CRIAR TIMES</button>
+            </Link>
+          </>
+        )}
+        
       </div>
     </>
   );
