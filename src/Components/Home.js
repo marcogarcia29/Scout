@@ -68,7 +68,8 @@ const Home = () => {
   }, [rent]);
 
   useEffect(() => {
-    setTotalPaid(rent);
+    rent >= 0 ? setTotalPaid(rent) : setTotalPaid(0)
+    // setTotalPaid(rent);
   }, [rent]);
 
   // LOCAL STORAGE TOTAL PAID
@@ -94,9 +95,10 @@ const Home = () => {
         <label className="labelForm">Valor do aluguel:</label>
         <input
           type="number"
+          min="0"
           step=".01"
-          value={rent}
-          onChange={(e) => setRent(e.target.value)}
+          value={Math.abs(rent)}
+          onChange={(e) => rent >= 0 ? setRent(e.target.value): setRent(0)}
           className="inputForm"
         />
 
