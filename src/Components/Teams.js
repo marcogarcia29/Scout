@@ -88,7 +88,10 @@ const Teams = () => {
           ))}
         </div>
       </div>
-    </div>
+      <div className='btnPosition'>
+        <button className='createScoutBtn'>REALIZAR SCOUT</button>  
+      </div>
+    </div>  
   )
 }
 
