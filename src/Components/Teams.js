@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react'
-import TeamContext from './TeamContext'
+import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import TeamContext from './TeamContext';
 
 const Teams = () => {
   const { players } = useContext(TeamContext)
@@ -89,7 +90,7 @@ const Teams = () => {
         </div>
       </div>
       <div className='btnPosition'>
-        <button className='createScoutBtn'>REALIZAR SCOUT</button>  
+       <Link to={"/scout"}><button className='createScoutBtn'>REALIZAR SCOUT</button></Link>  
       </div>
     </div>  
   )
