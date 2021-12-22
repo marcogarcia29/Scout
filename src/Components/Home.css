@@ -1,5 +1,4 @@
-.content{
-  width: 100%;
+.content {
   margin: 0 auto;
   padding: 15px;
   display: flex;
@@ -7,16 +6,12 @@
   align-items: center;
 }
 
-.formalize {
-  padding-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.labelForm {
+  margin-bottom: 5px;
 }
 
-.formalize input{
-  margin: 0 15px;
+.inputForm {
+  margin: 5px 15px 15px;
   padding: 5px 10px;
   background-color: rgb(51, 51, 51);
   color: azure;
@@ -24,11 +19,14 @@
   border-radius: 5px;
   display: block;
   outline: none;
+  width: 200px;
 }
 
 .organized-container {
   min-height: 150px;
-  width: 500px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 40%;
   padding: 15px 5px;
   margin: 20px 0;
   background-color: #444;
@@ -40,11 +38,10 @@
   border: 8px solid rgba(110, 189, 32, 0.521);
   border-style: outset;
   border-radius: 25px;
-
 }
 
-.card-player{
-  width: 300px;
+.card-player {
+  width: 70%;
   height: 50px;
   padding: 0 20px;
   margin-bottom: 5px;
@@ -56,6 +53,6 @@
   border-radius: 25px;
 }
 
-.card-player p{
+.card-player p {
   margin: 0 auto;
 }

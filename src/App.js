@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Teams from './Components/Teams'
 import Navbar from './Components/Navbar'
@@ -9,10 +9,19 @@ import { Scout } from './Components/Scout'
 import { Stats } from './Components/Stats'
 
 function App() {
-  const [players, setPlayers] = useState([])
-  const [name, setName] = useState('')
-  const [team1, setTeam1] = useState([])
-  const [team2, setTeam2] = useState([])
+  const [players, setPlayers] = useState([]);
+  const [name, setName] = useState("");
+  const [team1, setTeam1] = useState([]);
+  const [team2, setTeam2] = useState([]);
+
+  const handleStorage = (e) => {
+    e.preventDefault();
+    setTeam1([]);
+    setTeam2([]);
+    setName("");
+    setPlayers([]);
+    localStorage.clear();
+  }
 
   return (
     <Router>
@@ -25,23 +34,24 @@ function App() {
           team1,
           setTeam1,
           team2,
-          setTeam2
+          setTeam2,
         }}
       >
         <div className="App">
           <Navbar />
           <div className="content">
             <Routes>
-              <Route exact path="/" element={<Home />}></Route>
+              <Route exact path="/" element={<Home />} />
               <Route path="/teams" element={<Teams />} />
               <Route path="/scout" element={<Scout />} />
               <Route path="/stats" element={<Stats />} />
             </Routes>
+            <button className='clearStorageBtn' onClick={(e) => handleStorage(e)}> LIMPAR SELEÇÃO ATUAL</button>
           </div>
         </div>
       </TeamContext.Provider>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
