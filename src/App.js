@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar'
 import TeamContext from './Components/TeamContext'
 import Home from './Components/Home'
 import { Scout } from './Components/Scout'
+import { Stats } from './Components/Stats'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -34,6 +35,7 @@ function App() {
               <Route exact path="/" element={<Home />}></Route>
               <Route path="/teams" element={<Teams />} />
               <Route path="/scout" element={<Scout />} />
+              <Route path="/stats" element={<Stats />} />
             </Routes>
           </div>
         </div>

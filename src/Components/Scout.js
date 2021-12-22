@@ -1,5 +1,13 @@
 import React, { useState, useRef } from 'react'
-import { Container, TextField, Button, Typography } from '@mui/material'
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  MenuItem,
+  Select,
+  useTheme
+} from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import ReactPlayer from 'react-player'
 
@@ -28,6 +36,29 @@ const useStyles = makeStyles({
   }
 })
 
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 100,
+      fontFamily: 'Inconsolata'
+    }
+  }
+}
+
+const namesAction = ['Passe', 'Gol', 'Cartão Amarelo']
+
+function getStyles(name, acao, theme) {
+  return {
+    fontWeight:
+      acao.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium
+  }
+}
+
 function converterTempo(tempo) {
   let horas = Math.floor(tempo / 3600)
   let minutos = Math.floor((tempo - horas * 3600) / 60)
@@ -41,8 +72,16 @@ function converterTempo(tempo) {
 }
 
 function Scout() {
-  const [nome, setNome] = useState('')
+  const theme = useTheme()
   const [acao, setAcao] = useState('')
+  const handleChange = event => {
+    const {
+      target: { value }
+    } = event
+    setAcao(value)
+  }
+
+  const [nome, setNome] = useState('')
   const [url, setUrl] = useState({
     error: true,
     message: 'Nenhum vídeo carregado!',
@@ -135,18 +174,29 @@ function Scout() {
             fullWidth
             margin="normal"
           />
-          <TextField
-            className={classes.input}
-            value={acao}
-            onChange={event => {
-              setAcao(event.target.value)
-            }}
-            id="acao"
-            label="Ação do Jogador"
-            variant="outlined"
+          <Select
+            displayEmpty
             fullWidth
-            margin="normal"
-          />
+            value={acao}
+            onChange={handleChange}
+            renderValue={selected => {
+              if (selected.length === 0) {
+                return <em>Ação do Jogador</em>
+              }
+              return selected
+            }}
+            MenuProps={MenuProps}
+          >
+            {namesAction.map(name => (
+              <MenuItem
+                key={name}
+                value={name}
+                style={getStyles(name, acao, theme)}
+              >
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
           <Button
             onClick={pegarTempo}
             className={classes.root}
