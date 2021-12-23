@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext, useEffect } from 'react'
 import {
   Container,
   TextField,
@@ -10,6 +10,8 @@ import {
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import ReactPlayer from 'react-player'
+import TeamContext from './TeamContext'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +19,7 @@ const useStyles = makeStyles({
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 255, 255, .3)',
-    color: '#fafafa',
+    color: 'rgba(110, 189, 32, 0.521)',
     height: 48,
     padding: '0 30px'
   },
@@ -72,6 +74,7 @@ function converterTempo(tempo) {
 }
 
 function Scout() {
+  const { players } = useContext(TeamContext)
   const theme = useTheme()
   const [acao, setAcao] = useState('')
   const handleChange = event => {
@@ -80,8 +83,16 @@ function Scout() {
     } = event
     setAcao(value)
   }
+  const handlePlayers = event => {
+    const {
+      target: { value }
+    } = event
+    setNome(value)
+  }
 
   const [nome, setNome] = useState('')
+  const [namePlayers, setNamePlayers] = useState([])
+
   const [url, setUrl] = useState({
     error: true,
     message: 'Nenhum vídeo carregado!',
@@ -96,20 +107,31 @@ function Scout() {
     return converterTempo(videoRef.current.getCurrentTime())
   }
 
+  //  const playerName = JSON.parse(localStorage.getItem('players'))
+
   const addAcao = event => {
     event.preventDefault()
-    const playerAcao = JSON.parse(localStorage.getItem('Acao'))
-    if (playerAcao != null) {
-      playerAcao.push({ nome, acao, time: pegarTempo() })
-      localStorage.setItem('Acao', JSON.stringify(playerAcao))
-    } else {
-      localStorage.setItem(
-        'Acao',
-        JSON.stringify([{ nome, acao, time: pegarTempo() }])
-      )
+    const playerAcao = JSON.parse(localStorage.getItem('Actions'))
+    if (nome !== '' && acao !== '') {
+      if (playerAcao != null) {
+        playerAcao.push({ nome, acao, time: pegarTempo() })
+        localStorage.setItem('Actions', JSON.stringify(playerAcao))
+      } else {
+        localStorage.setItem(
+          'Actions',
+          JSON.stringify([{ nome, acao, time: pegarTempo() }])
+        )
+      }
+      setAcao('')
     }
-    setAcao('')
   }
+
+  useEffect(() => {
+    let players = JSON.parse(localStorage.getItem('players'))
+    if (players) {
+      setNamePlayers(players)
+    }
+  }, [])
 
   return (
     <>
@@ -154,6 +176,7 @@ function Scout() {
             }
             ref={videoRef}
             url={url.url}
+            controls="true"
             width="100%"
             height="260px"
           />
@@ -162,18 +185,25 @@ function Scout() {
         )}
 
         <form onSubmit={addAcao}>
-          <TextField
-            className={classes.input}
-            value={nome}
-            onChange={event => {
-              setNome(event.target.value)
-            }}
-            id="nome"
-            label="Nome do Jogador"
-            variant="outlined"
+          <Select
+            displayEmpty
             fullWidth
-            margin="normal"
-          />
+            onChange={handlePlayers}
+            value={nome}
+            renderValue={selected => {
+              if (selected.length === 0) {
+                return <em>Nome do Jogador</em>
+              }
+              return selected
+            }}
+          >
+            <MenuItem value={''}>Selecione um nome:</MenuItem>
+            {namePlayers.map(player => (
+              <MenuItem key={player.name} value={player.name}>
+                {player.name}
+              </MenuItem>
+            ))}
+          </Select>
           <Select
             displayEmpty
             fullWidth
@@ -187,6 +217,7 @@ function Scout() {
             }}
             MenuProps={MenuProps}
           >
+            <MenuItem value={''}>Selecione a ação do jogador:</MenuItem>
             {namesAction.map(name => (
               <MenuItem
                 key={name}
@@ -210,6 +241,11 @@ function Scout() {
           </Button>
         </form>
       </Container>
+      <Link to="/stats">
+        <button className="createTeamBtn">
+          VISUALIZAR ESTASTÍSTICAS DOS JOGADORES
+        </button>
+      </Link>
     </>
   )
 }
