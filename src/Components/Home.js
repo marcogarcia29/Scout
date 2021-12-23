@@ -69,7 +69,6 @@ const Home = () => {
 
   useEffect(() => {
     rent >= 0 ? setTotalPaid(rent) : setTotalPaid(0)
-    // setTotalPaid(rent);
   }, [rent]);
 
   // LOCAL STORAGE TOTAL PAID
